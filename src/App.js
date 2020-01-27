@@ -1,23 +1,29 @@
 import React from 'react';
 import './App.css';
+import ProductContainer from './components/ProductContainer';
 
 
 class App extends React.Component {
 
   state={
-    product: "",
+    product: {},
     reviews: []
   }
 
   componentDidMount(){
     fetch('./data.json')
         .then(res => res.json())
-        .then(data => this.setState({product: data.product, reviews:data.productreviews}) )
+        .then(data => this.setState({product: data.product, reviews:data.reviews}) )
   }
 
   render(){
     return(
-      <div></div>
+      <>
+      <div className="container">
+      <div className="header-box" />
+        <ProductContainer product={this.state.product} />
+      </div>
+      </>
     )
   }
 
