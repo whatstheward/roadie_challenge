@@ -1,9 +1,10 @@
-        {"product": {
-            "name": "ROADIE COMMUNICATOR - INCLUDES INSTALLATION SOFTWARE",
-            "company": "Roadie",
+            {"product":{
+                "name": "ROADIE COMMUNICATOR - INCLUDES INSTALLATION SOFTWARE",
+                "company": "Roadie",
                 "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate quis enim vitae molestie.",
                 "sub_desc": ["Morbi erat sem, ultrices vitae consequat ut, vehicula vitae leo."],
-                "reviews": [
+                "image": "./Software-Box-Mock-Up.jpg"},
+            "reviews": [
                 {
                     "title": "Perfect",
                     "rating": 5,
@@ -55,4 +56,3 @@
                 }
             ]
         }
-    }
