@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
-import ProductContainer from './components/ProductContainer';
+import ProductContainer from './components/product/ProductContainer';
+import ReviewContainer from './reviews/ReviewContainer';
 
 
 class App extends React.Component {
@@ -8,6 +9,17 @@ class App extends React.Component {
   state={
     product: {},
     reviews: []
+  }
+
+  averageRating = () => {
+    if(this.state.reviews.length > 0){
+      const allRatings = this.state.reviews.map(review=> review.rating)
+      const totalRatings = allRatings.reduce((acc, el) => acc+el)
+      const avg = totalRatings/allRatings.length
+      return Math.round(avg)
+    }else{
+      return 0
+    }
   }
 
   componentDidMount(){
@@ -20,8 +32,9 @@ class App extends React.Component {
     return(
       <>
       <div className="container">
-      <div className="header-box" />
+      <header className="header-box" />
         <ProductContainer product={this.state.product} />
+        <ReviewContainer reviews={this.state.reviews} averageRating={this.averageRating()}/>
       </div>
       </>
     )

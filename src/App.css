@@ -1,7 +1,7 @@
 .container {
   display: block;
   justify-content: flex-start;
-  margin: 3vw 15vw;
+  margin: 5vmin 25vmin;
 }
 
 .App-logo {
@@ -17,9 +17,9 @@
 
 .header-box {
   display: inline-block;
-  height: 7vh;
-  width: 100%;
-  margin-bottom: 5vh;
+  height: 45px;
+  width: 75vw;
+  margin-bottom: 20px;
   background-color: black;
 }
 
