@@ -1,7 +1,8 @@
 import React from 'react';
 import './App.css';
 import ProductContainer from './components/product/ProductContainer';
-import ReviewContainer from './reviews/ReviewContainer';
+import ReviewContainer from './components/reviews/ReviewContainer';
+import ReviewModal from './components/modal/ReviewModal'
 
 
 class App extends React.Component {
@@ -9,7 +10,8 @@ class App extends React.Component {
   state={
     product: {},
     reviews: [],
-    filter: null
+    filter: null,
+    showModal: false
   }
   
   componentDidMount(){
@@ -46,6 +48,16 @@ class App extends React.Component {
     this.setState({filter: rating})
   }
 
+  handleSubmit=(state)=> {
+    let newReviews = [...this.state.reviews, state]
+    this.setState({reviews: newReviews})
+    this.toggleModalView()
+  }
+
+  toggleModalView=()=>{
+    this.setState({showModal: !this.state.showModal})
+  }
+
   populateReviews=()=>{
     let reviewsToPrint
     if(this.state.filter != null){
@@ -75,12 +87,22 @@ ratingBar = (rating, key) => {
     )
 }
 
+renderModal = () => {
+  if(this.state.showModal){
+    return(
+      <ReviewModal toggleModalView={this.toggleModalView} handleSubmit={this.handleSubmit} />
+    )
+  }
+}
+
   render(){
     return(
       <>
       <div className="container">
+        {this.renderModal()}
       <header className="header-box" />
-        <ProductContainer product={this.state.product} />
+        <ProductContainer product={this.state.product} 
+                          toggleModalView={this.toggleModalView}/>
         <ReviewContainer handleReviewFilter={this.handleReviewFilter} 
                         reviews={this.populateReviews()}
                         totalReviews={this.state.reviews.length}

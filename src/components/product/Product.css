@@ -21,7 +21,7 @@ margin-top: 0;
 }
 
 .ui.button {
-    height: 3.5em;
+height: 3.5em;
 cursor: pointer;
 display: inline-block;
 min-height: 1em;
@@ -32,10 +32,11 @@ background: #E0E1E2 none;
 color: rgba(0, 0, 0, 0.6);
 font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
 margin: 0em 1em 0em 0em;
-padding: 0.78571429em 1.5em 0.78571429em;
+padding: .5em 2em ;
 text-transform: none;
 text-shadow: none;
-font-weight: bold;
+font-weight: bolder;
+font-size: 14px;
 line-height: 1em;
 font-style: normal;
 text-align: center;

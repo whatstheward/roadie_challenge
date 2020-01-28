@@ -13,7 +13,7 @@ const ProductContainer = (props) => {
                     <li>{props.product.sub_desc}</li>
                 </ul>
                 <footer>
-                    <button className="ui button inverted teal">LEAVE REVIEW</button>
+                    <button className="ui button inverted teal" onClick={()=>props.toggleModalView()}>LEAVE REVIEW</button>
                     <button className="ui button teal">ADD TO CART</button>
                 </footer>
             </section>
