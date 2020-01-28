@@ -1,37 +1,12 @@
 .container {
   display: block;
   justify-content: flex-start;
-  margin: 5vmin 25vmin;
+  margin: 5vmin 10vw;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .header-box {
   display: inline-block;
   height: 45px;
   width: 75vw;
   margin-bottom: 20px;
   background-color: black;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }

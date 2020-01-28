@@ -22,6 +22,10 @@ class App extends React.Component {
     }
   }
 
+  handleReviewFilter = (rating) => {
+    console.log(rating)
+  }
+
   componentDidMount(){
     fetch('./data.json')
         .then(res => res.json())
