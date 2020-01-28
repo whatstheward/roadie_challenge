@@ -8,7 +8,14 @@ class App extends React.Component {
 
   state={
     product: {},
-    reviews: []
+    reviews: [],
+    filter: null
+  }
+  
+  componentDidMount(){
+    fetch('./data.json')
+        .then(res => res.json())
+        .then(data => this.setState({product: data.product, reviews:data.reviews}) )
   }
 
   averageRating = () => {
@@ -22,15 +29,51 @@ class App extends React.Component {
     }
   }
 
-  handleReviewFilter = (rating) => {
-    console.log(rating)
+  compactRatings=()=>{
+    let allReviews = {}
+    this.state.reviews.forEach(review=> {
+            const rating = review.rating
+            if(!Object.keys(allReviews).includes(rating.toString())){
+            allReviews[rating]= 1
+            }else{
+            allReviews[rating] = allReviews[rating]+1
+        }
+            })
+    return allReviews
+}
+
+  handleReviewFilter = (e, rating) => {
+    this.setState({filter: rating})
   }
 
-  componentDidMount(){
-    fetch('./data.json')
-        .then(res => res.json())
-        .then(data => this.setState({product: data.product, reviews:data.reviews}) )
+  populateReviews=()=>{
+    let reviewsToPrint
+    if(this.state.filter != null){
+      debugger
+      reviewsToPrint = this.state.reviews.filter(review=> review.rating == this.state.filter)
+    }else{
+      reviewsToPrint = this.state.reviews
+    }
+    return reviewsToPrint
   }
+
+  buildRatings=()=>{
+    let ratings = this.compactRatings()
+    let bars = []
+    Object.keys(ratings).map(rating=> {
+        bars.unshift(this.ratingBar(rating, ratings[rating]))
+    })
+    return bars
+}
+
+ratingBar = (rating, key) => {
+    return(
+        <div className="rating-bar">
+            <p onClick={(e)=> this.handleReviewFilter(e, rating)}>{rating} stars</p>
+            <progress className="rating-bar" value={key} max={this.state.reviews.length}/>
+        </div>
+    )
+}
 
   render(){
     return(
@@ -38,7 +81,12 @@ class App extends React.Component {
       <div className="container">
       <header className="header-box" />
         <ProductContainer product={this.state.product} />
-        <ReviewContainer reviews={this.state.reviews} averageRating={this.averageRating()}/>
+        <ReviewContainer handleReviewFilter={this.handleReviewFilter} 
+                        reviews={this.populateReviews()}
+                        totalReviews={this.state.reviews.length}
+                        averageRating={this.averageRating()}
+                        buildRatings={this.buildRatings}
+                        />
       </div>
       </>
     )

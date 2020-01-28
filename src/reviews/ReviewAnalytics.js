@@ -6,7 +6,7 @@ const ReviewAnalytics = (props) => {
         <aside>
                 <h3>CUSTOMER REVIEWS</h3>
                 <span>{props.buildStars(props.averageRating)}  {props.averageRating} out of 5</span>
-                <p>{props.totalRating} reviews</p>
+                <p>{props.totalReviews} reviews</p>
                 <div>
                     {props.buildRatings()}
                 </div>
