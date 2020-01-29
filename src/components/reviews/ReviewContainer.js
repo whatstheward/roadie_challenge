@@ -26,7 +26,8 @@ const ReviewContainer = (props) => {
             <ReviewAnalytics averageRating={props.averageRating} 
                             buildStars={buildStars} 
                             totalReviews={props.totalReviews}
-                            buildRatings={props.buildRatings}/>
+                            buildRatings={props.buildRatings}
+                            handleReviewFilter={props.handleReviewFilter}/>
             <div className="review-box">
                 {props.reviews.map((review, i) => <ReviewCard buildStars={buildStars} review={review} key={i}/>)}
             </div>

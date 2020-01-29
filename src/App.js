@@ -61,7 +61,6 @@ class App extends React.Component {
   populateReviews=()=>{
     let reviewsToPrint
     if(this.state.filter != null){
-      debugger
       reviewsToPrint = this.state.reviews.filter(review=> review.rating == this.state.filter)
     }else{
       reviewsToPrint = this.state.reviews
